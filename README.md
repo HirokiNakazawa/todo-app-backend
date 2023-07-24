@@ -4,6 +4,7 @@
 TODOアプリのAPIサーバー
 
 ## 機能
+- ユーザー作成
 - カテゴリ作成
 - カテゴリ削除
 - TODO作成
@@ -16,11 +17,18 @@ TODOアプリのAPIサーバー
 todo_app_db
 
 ### テーブル
+- app_users  
+  |カラム名|型|備考|
+  |-|-|-|
+  |id|Integer|PK|
+  |name|String|NOT NULL|
+  |password|String|NOT NULL|
 - categories
   |カラム名|型|備考|
   |-|-|-|
   |id|Integer|PK|
-  |category|varchar(30)|NOT NULL|
+  |user_id|Integer|FK|
+  |category|String|NOT NULL|
 - todos
   |カラム名|型|備考|
   |-|-|-|
