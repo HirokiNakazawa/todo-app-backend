@@ -40,9 +40,12 @@ todo_app_db
 ## API
 | URL                | メソッド | 機能                   |
 | ------------------ | -------- | ---------------------- |
+| /register          | POST     | ユーザー登録           |
+| /login             | POST     | ログイン               |
+| /users             | GET      | 全ユーザーデータを取得 |
 | /categories/create | POST     | カテゴリを作成する     |
 | /categories/delete | DELETE   | カテゴリを削除する     |
-| /todos/show        | GET      | 全TODOデータを取得する |
+| /todos             | GET      | 全TODOデータを取得する |
 | /todos/create      | POST     | TODOを作成する         |
-| /todos/edit        | PUT      | TODOを編集する         |
+| /todos/update      | PUT      | TODOを編集する         |
 | /todos/delete      | DELETE   | TODOを編集する         |

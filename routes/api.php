@@ -21,7 +21,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::post('/register', [AppUserController::class, 'register']);
+Route::post('/login', [AppUserController::class, 'login']);
+
 Route::get('/users', [AppUserController::class, 'index']);
-Route::post('/users/create', [AppUserController::class, 'store']);
 
 Route::get('/categories', [CategoryController::class, 'index']);
