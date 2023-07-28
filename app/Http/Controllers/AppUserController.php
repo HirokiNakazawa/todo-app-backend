@@ -24,18 +24,18 @@ class AppUserController extends Controller
 
     public function login(Request $request)
     {
-        $exists = AppUser::where('name', $request->name)
+        $user = AppUser::where('name', $request->name)
             ->where('password', $request->password)
-            ->exists();
+            ->select('id', 'name')->first();
 
-        if ($exists) {
+        if ($user) {
             return response()->json(
-                "ログイン情報が認証されました",
-                200,
+                $user,
+                200
             );
         } else {
             return response()->json(
-                "ログイン情報が間違っています",
+                "Login Error",
                 401
             );
         }
