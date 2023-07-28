@@ -29,15 +29,23 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $category = Category::create($request->all());
+        return response()->json(
+            $category,
+            201
+        );
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Category $category)
+    public function show($userId)
     {
-        //
+        $categories = Category::where('user_id', $userId)->get();
+        return response()->json(
+            $categories,
+            200
+        );
     }
 
     /**

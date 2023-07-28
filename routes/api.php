@@ -26,4 +26,5 @@ Route::post('/login', [AppUserController::class, 'login']);
 
 Route::get('/users', [AppUserController::class, 'index']);
 
-Route::get('/categories', [CategoryController::class, 'index']);
+Route::get('/categories/{userId}', [CategoryController::class, 'show']);
+Route::post('/categories/create', [CategoryController::class, 'store']);
