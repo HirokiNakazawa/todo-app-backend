@@ -24,30 +24,33 @@ todo_app_db
   | name     | String  | NOT NULL |
   | password | String  | NOT NULL |
 - categories
-  | カラム名 | 型      | 備考     |
-  | -------- | ------- | -------- |
-  | id       | Integer | PK       |
-  | user_id  | Integer | FK       |
-  | category | String  | NOT NULL |
+  | カラム名 | 型      | 備考             |
+  | -------- | ------- | ---------------- |
+  | id       | Integer | PK               |
+  | user_id  | Integer | FK(app_users.id) |
+  | category | String  | NOT NULL         |
 - todos
   | カラム名     | 型       | 備考                      |
   | ------------ | -------- | ------------------------- |
   | id           | Integer  | PK                        |
-  | category_id  | Integer  | FK                        |
+  | user_id      | Integer  | FK(app_users.id)          |
+  | category_id  | Integer  | FK(categories.id)         |
   | todo         | Text     | NOT NULL                  |
   | limit_date   | datetime | NULLABLE                  |
   | is_completed | Boolean  | True:完了<br>False:未完了 |
 
 ## API
-| URL                  | メソッド | 機能                       |
-| -------------------- | -------- | -------------------------- |
-| /register            | POST     | ユーザー登録               |
-| /login               | POST     | ログイン                   |
-| /users               | GET      | 全ユーザーデータを取得     |
-| /categories/{userId} | GET      | ユーザー毎のカテゴリを取得 |
-| /categories/create   | POST     | カテゴリを作成する         |
-| /categories/delete   | DELETE   | カテゴリを削除する         |
-| /todos               | GET      | 全TODOデータを取得する     |
-| /todos/create        | POST     | TODOを作成する             |
-| /todos/update        | PUT      | TODOを編集する             |
-| /todos/delete        | DELETE   | TODOを編集する             |
+| URL                      | メソッド | 機能                       |
+| ------------------------ | -------- | -------------------------- |
+| /register                | POST     | ユーザー登録               |
+| /login                   | POST     | ログイン                   |
+| /users                   | GET      | 全ユーザーデータを取得     |
+| /categories/{userId}     | GET      | ユーザー毎のカテゴリを取得 |
+| /categories/create       | POST     | カテゴリを作成             |
+| /categories/delete       | DELETE   | カテゴリを削除             |
+| /todos                   | GET      | 全TODOを取得               |
+| /todos/{userId}          | GET      | ユーザー毎のTODOを取得     |
+| /todos/show/{categoryId} | GET      | カテゴリ毎のTODOを取得     |
+| /todos/create            | POST     | TODOを作成                 |
+| /todos/update            | PUT      | TODOを編集                 |
+| /todos/delete            | DELETE   | TODOを編集                 |
