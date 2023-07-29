@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use App\Models\Category;
+
 class Todo extends Model
 {
     use HasFactory;
@@ -17,4 +19,9 @@ class Todo extends Model
         'limit_date',
         'is_completed',
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

@@ -38,7 +38,10 @@ class TodoController extends Controller
 
     public function getUserTodos($userId)
     {
-        $todos = Todo::where('user_id', $userId)->get();
+        $todos = Todo::join('categories', 'todos.category_id', '=', 'categories.id')
+            ->where('todos.user_id', $userId)
+            ->select('todos.id as id', 'todos.todo as todo', 'todos.limit_date', 'todos.is_completed', 'categories.category as category_name')
+            ->get();
         return response()->json(
             $todos,
             200
