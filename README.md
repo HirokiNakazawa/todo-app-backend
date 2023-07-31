@@ -38,6 +38,8 @@ todo_app_db
   | todo         | Text     | NOT NULL                  |
   | limit_date   | datetime | NULLABLE                  |
   | is_completed | Boolean  | True:完了<br>False:未完了 |
+  | created_at   | datetime | NOT NULL                  |
+  | updated_at   | datetime | NOT NULL                  |
 
 ## API
 | URL                      | メソッド | 機能                       |

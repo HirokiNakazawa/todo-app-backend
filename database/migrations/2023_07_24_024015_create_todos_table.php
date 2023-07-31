@@ -19,6 +19,7 @@ return new class extends Migration {
             $table->text('todo');
             $table->timestamp('limit_date')->nullable();
             $table->boolean('is_completed');
+            $table->timestamps();
         });
     }
 

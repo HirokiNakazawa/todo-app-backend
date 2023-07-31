@@ -40,7 +40,8 @@ class TodoController extends Controller
     {
         $todos = Todo::join('categories', 'todos.category_id', '=', 'categories.id')
             ->where('todos.user_id', $userId)
-            ->select('todos.id as id', 'todos.todo as todo', 'todos.limit_date', 'todos.is_completed', 'categories.category as category_name')
+            ->select('todos.*', 'categories.category as category_name')
+            ->orderBy('todos.updated_at', 'desc')
             ->get();
         return response()->json(
             $todos,
