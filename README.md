@@ -52,5 +52,5 @@ todo_app_db
 | /todos/{userId}          | GET      | ユーザー毎のTODOを取得     |
 | /todos/show/{categoryId} | GET      | カテゴリ毎のTODOを取得     |
 | /todos/create            | POST     | TODOを作成                 |
-| /todos/update            | PUT      | TODOを編集                 |
-| /todos/delete            | DELETE   | TODOを編集                 |
+| /todos/update/{todoId}   | PUT      | TODOを編集                 |
+| /todos/delete/{todoId}   | DELETE   | TODOを編集                 |
