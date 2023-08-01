@@ -91,8 +91,15 @@ class TodoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $todo = Todo::find($id);
+        if (!$todo) {
+            // 削除対象のアイテムが見つからない場合は404エラーを返す
+            return response()->json("TODOが見つかりません", 404);
+        } else {
+            $todo->delete();
+            return response()->json("削除が完了しました", 200);
+        }
     }
 }
