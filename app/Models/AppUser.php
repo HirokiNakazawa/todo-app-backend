@@ -14,4 +14,18 @@ class AppUser extends Model
         'name',
         'password',
     ];
+
+    public static function register($data)
+    {
+        $user = self::create($data->all());
+        return self::select('id', 'name')->find($user->id);
+    }
+
+    public static function login($data)
+    {
+        return self::where('name', $data->name)
+            ->where('password', $data->password)
+            ->select('id', 'name')
+            ->first();
+    }
 }

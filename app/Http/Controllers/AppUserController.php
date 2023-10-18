@@ -15,18 +15,24 @@ class AppUserController extends Controller
 
     public function register(Request $request)
     {
-        $appUser = AppUser::create($request->all());
-        return response()->json(
-            $appUser,
-            201
-        );
+        $user = AppUser::register($request->all());
+
+        if ($user) {
+            return response()->json(
+                $user,
+                201
+            );
+        } else {
+            return response()->json(
+                array("message" => "ユーザー登録に失敗しました"),
+                401
+            );
+        }
     }
 
     public function login(Request $request)
     {
-        $user = AppUser::where('name', $request->name)
-            ->where('password', $request->password)
-            ->select('id', 'name')->first();
+        $user = AppUser::login($request);
 
         if ($user) {
             return response()->json(
@@ -35,7 +41,7 @@ class AppUserController extends Controller
             );
         } else {
             return response()->json(
-                "Login Error",
+                array("message" => "ログインに失敗しました"),
                 401
             );
         }
