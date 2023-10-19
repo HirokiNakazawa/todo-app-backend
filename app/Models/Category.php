@@ -14,4 +14,11 @@ class Category extends Model
         'user_id',
         'category'
     ];
+
+    public static function getCategoriesByUser($id)
+    {
+        $categories = Category::where('user_id', $id)
+            ->select('id', 'category')->get();
+        return $categories;
+    }
 }

@@ -15,7 +15,7 @@ class AppUserController extends Controller
 
     public function register(Request $request)
     {
-        $user = AppUser::register($request->all());
+        $user = AppUser::register($request);
 
         if ($user) {
             return response()->json(
