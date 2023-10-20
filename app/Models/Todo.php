@@ -33,4 +33,13 @@ class Todo extends Model
             ->get();
         return $todos;
     }
+
+    public static function createTodo($data)
+    {
+        $todo = self::create($data->all());
+        return self::join('categories', 'todos.category_id', '=', 'categories.id')
+            ->where('todos.id', $todo->id)
+            ->select('categories.category', 'todos.todo', 'todos.limit_date')
+            ->first();
+    }
 }
