@@ -30,7 +30,7 @@ Route::get('/users', [AppUserController::class, 'index']);
 Route::get('/categories/{userId}', [CategoryController::class, 'show']);
 Route::post('/categories/create', [CategoryController::class, 'store']);
 
-Route::get('/todos/{userId}', [TodoController::class, 'getUserTodos']);
+Route::get('/todos/{userId}', [TodoController::class, 'show']);
 Route::get('/todos/show/{categoryId}', [TodoController::class, 'showByCategory']);
 Route::post('/todos/create', [TodoController::class, 'store']);
 Route::put('/todos/update/{todoId}', [TodoController::class, 'update']);

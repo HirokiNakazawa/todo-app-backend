@@ -17,14 +17,6 @@ class TodoController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
@@ -61,9 +53,14 @@ class TodoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($userId)
     {
-        //
+        $todos = Todo::getTodosByUser($userId);
+
+        return response()->json(
+            $todos,
+            200
+        );
     }
 
     /**

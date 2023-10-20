@@ -23,4 +23,14 @@ class Todo extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    public static function getTodosByUser($id)
+    {
+        $todos = self::join('categories', 'todos.category_id', '=', 'categories.id')
+            ->where('todos.user_id', $id)
+            ->select('todos.id', 'todos.category_id', 'todos.todo', 'todos.limit_date', 'is_completed', 'categories.category')
+            ->orderBy('todos.updated_at', 'desc')
+            ->get();
+        return $todos;
+    }
 }
