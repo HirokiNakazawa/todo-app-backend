@@ -42,4 +42,14 @@ class Todo extends Model
             ->select('categories.category', 'todos.todo', 'todos.limit_date')
             ->first();
     }
+
+    public static function updateTodo($data, $id)
+    {
+        $todo = self::findOrFail($id);
+        $todo->update($data->all());
+        return self::join('categories', 'todos.category_id', '=', 'categories.id')
+            ->where('todos.id', $todo->id)
+            ->select('categories.category', 'todos.todo', 'todos.limit_date', 'todos.is_completed')
+            ->first();
+    }
 }

@@ -77,9 +77,8 @@ class TodoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->all();
-        $todo = Todo::findOrFail($id);
-        $todo->update($data);
+        $todo = Todo::updateTodo($request, $id);
+
         return response()->json(
             $todo,
             200
